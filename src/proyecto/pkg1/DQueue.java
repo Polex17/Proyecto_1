@@ -182,7 +182,7 @@ public class DQueue<T> {
                 r.append(", ");
             }
         }
-        r.append("}");
+        r.append("}\n");
         return r.toString();
     }
 /*

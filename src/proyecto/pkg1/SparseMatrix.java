@@ -45,12 +45,27 @@ public class SparseMatrix<T> {
         rows = new DQueue<>();
     }
 
+    public boolean isDynamic() {
+        return dynamic;
+    }
+
+    public void setDynamic(boolean dynamic) {
+        this.dynamic = dynamic;
+    }
+
     int getRowCount() {
-        return 0;
+        return rows.size();
     }
 
     int getColumnCount() {
-        return 0;
+        int columnValue = 0;
+        for (int index = 0; index < rows.size(); index++) {
+            if (rows.get(index).size() > columnValue) {
+                columnValue = rows.get(index).size();
+            }
+        }
+
+        return columnValue;
     }
 
     void set(int positionRow, int positionColumn, T object) {
@@ -63,42 +78,44 @@ public class SparseMatrix<T> {
                 rows.add(rowToAdd, positionRow);
 
             } else if (positionRow <= this.tamRow && positionColumn <= this.tamCol) {
-                
+
                 int index = 0;
-                
+
                 while (index < rows.size()) {
-                    
+
                     if (rows.get(index).getPosRow() == positionRow) {
-                        
+
                         rows.get(index).addPosition(object, positionColumn, positionColumn);
                         break;
                     }
-                    
+
                     index++;
                 }
             } else if (this.dynamic) {
-                
+
                 if (positionRow > this.tamRow) {
-                    
+
                     DQueueMatrix<T> rowToAdd = new DQueueMatrix<>(positionRow);
                     rowToAdd.add(object, positionColumn);
                     rows.add(rowToAdd, positionRow);
-                    
+
                 } else if (positionRow <= this.tamRow && positionColumn > this.tamCol) {
-                    
+
                     int index = 0;
-                    
+
                     while (index < rows.size()) {
-                        
+
                         if (rows.get(index).getPosRow() == positionRow) {
                             rows.get(index).addPosition(object, positionColumn, positionColumn);
                             break;
                         }
-                        
+
                         index++;
                     }
 
                 }
+            } else {
+                throw new IndexOutOfBoundsException();
             }
 
         } else {

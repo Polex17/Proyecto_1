@@ -77,7 +77,7 @@ public class DQueueMatrix<T> {
 
     public void addPosition(T object, int location, int position) {
         if (object != null) {
-            if ((position < 0) || (total <= position)) {
+            if ((position < 0 || total <= position) && last.getPos() != location) {
                 add(object, location);
             }
             if (position == size() && last.getPos() != location) {

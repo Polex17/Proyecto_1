@@ -30,14 +30,27 @@ public class Principal {
      */
     public static void main(String[] args) {
         SparseMatrix<Integer> m1 = new SparseMatrix<>(2, 2);
+        m1.setDynamic(true);
         m1.set(1, 1, 5);
-
         System.out.println(m1);
+        System.out.println("TamCol: " + m1.getColumnCount());
+        System.out.println("TamRow: " + m1.getRowCount());
+
         m1.set(1, 1, 10);
         System.out.println(m1);
+        System.out.println("TamCol: " + m1.getColumnCount());
+        System.out.println("TamRow: " + m1.getRowCount());
 
         m1.set(1, 2, 7);
         System.out.println(m1);
+        System.out.println("TamCol: " + m1.getColumnCount());
+        System.out.println("TamRow: " + m1.getRowCount());
+
+        m1.set(3, 3, 17);
+        System.out.println(m1);
+
+        System.out.println("TamCol: " + m1.getColumnCount());
+        System.out.println("TamRow: " + m1.getRowCount());
     }
 
 }
