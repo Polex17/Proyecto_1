@@ -5,37 +5,44 @@
  */
 package proyecto.pkg1;
 
-/** 
-* 
-* (c) 2021 
-* @author Jeffrey Steven Monroy Laguna, , 
-* @version 1.0.0 2021-10-24 
-* 
-* ----------------------------------------------- 
-* EIF207 Estructuras de Datos 
-* 2do ciclo 2021, grupo ???? 
-* Proyecto 1 
-* 
-* 117180577 Jeffrey Steven Monroy Laguna
-* 
-* 
-* 
-* ----------------------------------------------- 
-* 
-* 
-*/
-
+/**
+ *
+ * (c) 2021
+ *
+ * @author Jeffrey Steven Monroy Laguna, ,
+ * @version 1.0.0 2021-10-24
+ *
+ * ----------------------------------------------- EIF207 Estructuras de Datos
+ * 2do ciclo 2021, grupo ???? Proyecto 1
+ *
+ * 117180577 Jeffrey Steven Monroy Laguna
+ *
+ *
+ *
+ * -----------------------------------------------
+ *
+ *
+ */
 public class SparseMatrix<T> {
 
     int tamRow;
     int tamCol;
-    DQueue<DQueue> rows;
+    DQueue<DQueueMatrix> rows;
     boolean dynamic;
 
-    SparseMatrix(int m, int n, T v) {
+    SparseMatrix(int m, int n, T value) {
+        tamRow = m;
+        tamCol = n;
+
+        rows = new DQueue<>();
+        //Falta ver que hacer con el value de T
     }
 
     SparseMatrix(int m, int n) {
+        tamRow = m;
+        tamCol = n;
+
+        rows = new DQueue<>();
     }
 
     int getRowCount() {
@@ -46,7 +53,57 @@ public class SparseMatrix<T> {
         return 0;
     }
 
-    void set(int m, int n, T v) {
+    void set(int positionRow, int positionColumn, T object) {
+        if (object != null) {
+
+            if (rows.isEmpty()) {
+
+                DQueueMatrix<T> rowToAdd = new DQueueMatrix<>(positionRow);
+                rowToAdd.add(object, positionColumn);
+                rows.add(rowToAdd, positionRow);
+
+            } else if (positionRow <= this.tamRow && positionColumn <= this.tamCol) {
+                
+                int index = 0;
+                
+                while (index < rows.size()) {
+                    
+                    if (rows.get(index).getPosRow() == positionRow) {
+                        
+                        rows.get(index).addPosition(object, positionColumn, positionColumn);
+                        break;
+                    }
+                    
+                    index++;
+                }
+            } else if (this.dynamic) {
+                
+                if (positionRow > this.tamRow) {
+                    
+                    DQueueMatrix<T> rowToAdd = new DQueueMatrix<>(positionRow);
+                    rowToAdd.add(object, positionColumn);
+                    rows.add(rowToAdd, positionRow);
+                    
+                } else if (positionRow <= this.tamRow && positionColumn > this.tamCol) {
+                    
+                    int index = 0;
+                    
+                    while (index < rows.size()) {
+                        
+                        if (rows.get(index).getPosRow() == positionRow) {
+                            rows.get(index).addPosition(object, positionColumn, positionColumn);
+                            break;
+                        }
+                        
+                        index++;
+                    }
+
+                }
+            }
+
+        } else {
+            throw new IllegalArgumentException();
+        }
     }
 
     T get(int m, int n) {
@@ -55,7 +112,9 @@ public class SparseMatrix<T> {
 
     @Override
     public String toString() {
-        return null;
+        StringBuilder r = new StringBuilder();
+        r.append(rows.toString());
+        return r.toString();
     }
 
     boolean equals(SparseMatrix<T> other) {
@@ -74,9 +133,9 @@ public class SparseMatrix<T> {
         return null;
     }
 
-    SparseMatrix<T> splice(int m0, int m1, int n0, int n1){
-    
+    SparseMatrix<T> splice(int m0, int m1, int n0, int n1) {
+
         return null;
-    
+
     }
 }

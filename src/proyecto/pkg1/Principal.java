@@ -5,32 +5,39 @@
  */
 package proyecto.pkg1;
 
-/** 
-* 
-* (c) 2021 
-* @author Jeffrey Steven Monroy Laguna, , 
-* @version 1.0.0 2021-10-24 
-* 
-* ----------------------------------------------- 
-* EIF207 Estructuras de Datos 
-* 2do ciclo 2021, grupo ???? 
-* Proyecto 1 
-* 
-* 117180577 Jeffrey Steven Monroy Laguna
-* 
-* 
-* 
-* ----------------------------------------------- 
-* 
-* 
-*/
+/**
+ *
+ * (c) 2021
+ *
+ * @author Jeffrey Steven Monroy Laguna, ,
+ * @version 1.0.0 2021-10-24
+ *
+ * ----------------------------------------------- EIF207 Estructuras de Datos
+ * 2do ciclo 2021, grupo ???? Proyecto 1
+ *
+ * 117180577 Jeffrey Steven Monroy Laguna
+ *
+ *
+ *
+ * -----------------------------------------------
+ *
+ *
+ */
 public class Principal {
 
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
+        SparseMatrix<Integer> m1 = new SparseMatrix<>(2, 2);
+        m1.set(1, 1, 5);
+
+        System.out.println(m1);
+        m1.set(1, 1, 10);
+        System.out.println(m1);
+
+        m1.set(1, 2, 7);
+        System.out.println(m1);
     }
-    
+
 }
