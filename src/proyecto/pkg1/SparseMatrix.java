@@ -61,15 +61,19 @@ public class SparseMatrix<T> {
     int getColumnCount() {
         int columnValue = 0;
         for (int index = 0; index < rows.size(); index++) {
-            if (rows.get(index).size() > columnValue) {
-                columnValue = rows.get(index).size();
+            for (int index2 = 0; index2 < rows.get(index).size(); index2++) {
+                if (rows.get(index).getNodePos(index2) > columnValue) {
+
+                    columnValue = rows.get(index).getNodePos(index2);
+                }
             }
         }
 
         return columnValue;
     }
 
-    void set(int positionRow, int positionColumn, T object) {
+    void set(int positionRow, int positionColumn, T object
+    ) {
         if (object != null) {
 
             if (rows.isEmpty()) {
@@ -99,16 +103,17 @@ public class SparseMatrix<T> {
                 }
             } else if (this.dynamic) {
 
-                if (positionRow > this.tamRow) {
+                if (positionRow > this.tamRow && positionColumn <= this.tamCol) {
 
                     DQueueMatrix<T> rowToAdd = new DQueueMatrix<>(positionRow);
                     rowToAdd.add(object, positionColumn);
                     rows.add(rowToAdd, positionRow);
+                    this.setTamRow(positionRow);
 
                 } else if (positionRow <= this.tamRow && positionColumn > this.tamCol) {
 
                     int index = 0;
-
+                    boolean isFound = false;
                     while (index < rows.size()) {
 
                         if (rows.get(index).getPosRow() == positionRow) {
@@ -119,6 +124,20 @@ public class SparseMatrix<T> {
                         index++;
                     }
 
+                    if (!isFound) {
+                        DQueueMatrix<T> rowToAdd = new DQueueMatrix<>(positionRow);
+                        rowToAdd.add(object, positionColumn);
+                        rows.add(rowToAdd, positionRow);
+                    }
+                    this.setTamCol(positionColumn);
+
+                } else {
+
+                    DQueueMatrix<T> rowToAdd = new DQueueMatrix<>(positionRow);
+                    rowToAdd.add(object, positionColumn);
+                    rows.add(rowToAdd, positionRow);
+                    this.setTamCol(positionColumn);
+                    this.setTamRow(positionRow);
                 }
             } else {
                 throw new IndexOutOfBoundsException();
@@ -129,32 +148,32 @@ public class SparseMatrix<T> {
         }
     }
 
-    T get(int m, int n) {
+    T get(int m, int n
+    ) {
         return null;
     }
 
+//    @Override
+//    public String toString() {
+//        StringBuilder r = new StringBuilder();
+//        r.append(rows.toString());
+//        return r.toString();
+//    }
     @Override
     public String toString() {
         StringBuilder r = new StringBuilder();
-        r.append(rows.toString());
-        return r.toString();
-    }
-
-    public String ToString2(){
-        StringBuilder r = new StringBuilder();
         r.append("+");
-        for (int i = 0; i<tamCol ;i++){
+        for (int i = 0; i < tamCol; i++) {
             r.append("----");
         }
         r.append("+\n");
 
-        for (int j=0;j<tamRow;j++){
-            if (rows.isReal(j)){
+        for (int j = 0; j < tamRow; j++) {
+            if (rows.isReal(j)) {
                 r.append(rows.get(j).toString2(tamCol));
-            }
-            else{
+            } else {
                 r.append("|0");
-                for (int l = 1;l<tamCol;l++){
+                for (int l = 1; l < tamCol; l++) {
                     r.append(", 0");
                 }
                 r.append("|\n");
@@ -162,18 +181,20 @@ public class SparseMatrix<T> {
         }
 
         r.append("+");
-        for (int i = 0; i<tamCol ;i++){
+        for (int i = 0; i < tamCol; i++) {
             r.append("----");
         }
         r.append("+\n");
         return r.toString();
     }
 
-    boolean equals(SparseMatrix<T> other) {
+    boolean equals(SparseMatrix<T> other
+    ) {
         return false;
     }
 
-    SparseMatrix<T> add(SparseMatrix<T> m) {
+    SparseMatrix<T> add(SparseMatrix<T> m
+    ) {
         return null;
     }
 
@@ -181,13 +202,32 @@ public class SparseMatrix<T> {
         return null;
     }
 
-    SparseMatrix<T> multiply(SparseMatrix<T> m) {
+    SparseMatrix<T> multiply(SparseMatrix<T> m
+    ) {
         return null;
     }
 
-    SparseMatrix<T> splice(int m0, int m1, int n0, int n1) {
+    SparseMatrix<T> splice(int m0, int m1, int n0, int n1
+    ) {
 
         return null;
 
     }
+
+    private void setTamRow(int tamRow) {
+        this.tamRow = tamRow;
+    }
+
+    private void setTamCol(int tamCol) {
+        this.tamCol = tamCol;
+    }
+
+    public int getTamRow() {
+        return tamRow;
+    }
+
+    public int getTamCol() {
+        return tamCol;
+    }
+
 }

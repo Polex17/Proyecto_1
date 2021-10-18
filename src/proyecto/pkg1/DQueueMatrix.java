@@ -99,7 +99,7 @@ public class DQueueMatrix<T> {
         }
     }
 
-    public String toString2(int n){
+    public String toString2(int n) {
         StringBuilder r = new StringBuilder();
         DNodeMatrix<T> nodeAux = first;
         int aux = n;
@@ -112,7 +112,7 @@ public class DQueueMatrix<T> {
             }
             aux--;
         }
-        for (int k = aux;k>0;k--){
+        for (int k = aux; k > 0; k--) {
             r.append(", 0");
         }
         r.append("|\n");
@@ -211,6 +211,10 @@ public class DQueueMatrix<T> {
 
     public T get(int position) {
         return findPosition(position).getInfo();
+    }
+
+    public int getNodePos(int position) {
+        return findPosition(position).getPos();
     }
 
     private DNodeMatrix<T> findValue(T object) {
