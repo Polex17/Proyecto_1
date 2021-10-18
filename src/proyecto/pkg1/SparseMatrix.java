@@ -72,8 +72,7 @@ public class SparseMatrix<T> {
         return columnValue;
     }
 
-    void set(int positionRow, int positionColumn, T object
-    ) {
+    void set(int positionRow, int positionColumn, T object) {
         if (object != null) {
 
             if (rows.isEmpty()) {
@@ -118,6 +117,7 @@ public class SparseMatrix<T> {
 
                         if (rows.get(index).getPosRow() == positionRow) {
                             rows.get(index).addPosition(object, positionColumn, positionColumn);
+                            isFound = true;
                             break;
                         }
 
@@ -148,17 +148,35 @@ public class SparseMatrix<T> {
         }
     }
 
-    T get(int m, int n
-    ) {
-        return null;
+    T get(int positionRow, int positionColumn) {
+        if ((0 <= positionRow && positionRow <= this.tamRow) && (0 <= positionColumn && positionColumn <= this.tamCol)) {
+            int index = 0;
+            boolean isFound = false;
+            while (index < rows.size()) {
+
+                if (rows.get(index).getPosRow() == positionRow) {
+                    isFound = true;
+                    break;
+                }
+
+                index++;
+            }
+
+            if (isFound) {
+                for (int index2 = 0; index2 < rows.get(index).size(); index2++) {
+                    if (rows.get(index).getNodePos(index2) == positionColumn) {
+                        return (T) rows.get(index).get(index2);
+
+                    }
+                }
+            }
+            return null;
+        } else {
+            throw new IndexOutOfBoundsException();
+        }
+
     }
 
-//    @Override
-//    public String toString() {
-//        StringBuilder r = new StringBuilder();
-//        r.append(rows.toString());
-//        return r.toString();
-//    }
     @Override
     public String toString() {
         StringBuilder r = new StringBuilder();
@@ -188,13 +206,11 @@ public class SparseMatrix<T> {
         return r.toString();
     }
 
-    boolean equals(SparseMatrix<T> other
-    ) {
+    boolean equals(SparseMatrix<T> other) {
         return false;
     }
 
-    SparseMatrix<T> add(SparseMatrix<T> m
-    ) {
+    SparseMatrix<T> add(SparseMatrix<T> m) {
         return null;
     }
 
@@ -202,16 +218,12 @@ public class SparseMatrix<T> {
         return null;
     }
 
-    SparseMatrix<T> multiply(SparseMatrix<T> m
-    ) {
+    SparseMatrix<T> multiply(SparseMatrix<T> m) {
         return null;
     }
 
-    SparseMatrix<T> splice(int m0, int m1, int n0, int n1
-    ) {
-
+    SparseMatrix<T> splice(int m0, int m1, int n0, int n1) {
         return null;
-
     }
 
     private void setTamRow(int tamRow) {
