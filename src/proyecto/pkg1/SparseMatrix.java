@@ -80,16 +80,21 @@ public class SparseMatrix<T> {
             } else if (positionRow <= this.tamRow && positionColumn <= this.tamCol) {
 
                 int index = 0;
-
+                boolean isFound = false;
                 while (index < rows.size()) {
 
                     if (rows.get(index).getPosRow() == positionRow) {
-
+                        isFound = true;
                         rows.get(index).addPosition(object, positionColumn, positionColumn);
                         break;
                     }
 
                     index++;
+                }
+                if (!isFound) {
+                    DQueueMatrix<T> rowToAdd = new DQueueMatrix<>(positionRow);
+                    rowToAdd.add(object, positionColumn);
+                    rows.add(rowToAdd, positionRow);
                 }
             } else if (this.dynamic) {
 
