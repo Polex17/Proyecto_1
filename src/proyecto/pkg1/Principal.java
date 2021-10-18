@@ -110,6 +110,12 @@ public class Principal {
         System.out.println("CurrentTamCol: " + m1.getTamCol());
         System.out.println("CurrentTamRow: " + m1.getTamRow());
 
+        m1.set(5, 4, 200);
+        System.out.println(m1);
+        System.out.println("TamCol: " + m1.getColumnCount());
+        System.out.println("TamRow: " + m1.getRowCount());
+        System.out.println("CurrentTamCol: " + m1.getTamCol());
+        System.out.println("CurrentTamRow: " + m1.getTamRow());
     }
 
 }

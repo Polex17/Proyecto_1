@@ -259,5 +259,4 @@ public class DQueueMatrix<T> {
     public DNodeMatrix<T> getLast() {
         return last;
     }
-
 }

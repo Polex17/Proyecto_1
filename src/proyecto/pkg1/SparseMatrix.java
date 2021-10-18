@@ -229,5 +229,4 @@ public class SparseMatrix<T> {
     public int getTamCol() {
         return tamCol;
     }
-
 }
