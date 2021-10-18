@@ -30,6 +30,21 @@ public class DQueue<T> {
 
     }
 
+    public boolean isReal(int n){
+        int aux = n;
+        DNode<T> cursor = first;
+        while (cursor != null) {
+            cursor = cursor.getNext();
+            if (aux == 0){
+                return true;
+            }
+            else{
+                aux--;
+            }
+        }
+            return false;
+    }
+
     public boolean isEmpty() {
         return total == 0;
     }

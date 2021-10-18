@@ -92,12 +92,31 @@ public class DQueueMatrix<T> {
                     last = node;
                 } else {
                     node.getNext().setPrevious(node);
-
                 }
             }
         } else {
             throw new IllegalArgumentException();
         }
+    }
+
+    public String toString2(int n){
+        StringBuilder r = new StringBuilder();
+        DNodeMatrix<T> nodeAux = first;
+        int aux = n;
+        r.append("|");
+        while (nodeAux != null) {
+            r.append(nodeAux.getInfo());
+            nodeAux = nodeAux.getNext();
+            if (nodeAux != null) {
+                r.append(", ");
+            }
+            aux--;
+        }
+        for (int k = aux;k>0;k--){
+            r.append(", 0");
+        }
+        r.append("|\n");
+        return r.toString();
     }
 
     private T deleteNode(DNodeMatrix<T> node) {
@@ -212,7 +231,7 @@ public class DQueueMatrix<T> {
 
     @Override
     public String toString() {
-        StringBuilder r = new StringBuilder(getPosRow() + " {");
+        StringBuilder r = new StringBuilder(getPosRow() + " [");
         DNodeMatrix<T> cursor = first;
         while (cursor != null) {
             r.append(cursor.getInfo());
@@ -221,7 +240,7 @@ public class DQueueMatrix<T> {
                 r.append(", ");
             }
         }
-        r.append("}\n");
+        r.append("] \n");
         return r.toString();
     }
 

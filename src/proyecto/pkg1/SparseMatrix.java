@@ -35,6 +35,7 @@ public class SparseMatrix<T> {
         tamCol = n;
 
         rows = new DQueue<>();
+
         //Falta ver que hacer con el value de T
     }
 
@@ -136,6 +137,35 @@ public class SparseMatrix<T> {
     public String toString() {
         StringBuilder r = new StringBuilder();
         r.append(rows.toString());
+        return r.toString();
+    }
+
+    public String ToString2(){
+        StringBuilder r = new StringBuilder();
+        r.append("+");
+        for (int i = 0; i<tamCol ;i++){
+            r.append("----");
+        }
+        r.append("+\n");
+
+        for (int j=0;j<tamRow;j++){
+            if (rows.isReal(j)){
+                r.append(rows.get(j).toString2(tamCol));
+            }
+            else{
+                r.append("|0");
+                for (int l = 1;l<tamCol;l++){
+                    r.append(", 0");
+                }
+                r.append("|\n");
+            }
+        }
+
+        r.append("+");
+        for (int i = 0; i<tamCol ;i++){
+            r.append("----");
+        }
+        r.append("+\n");
         return r.toString();
     }
 

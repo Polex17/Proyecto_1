@@ -36,6 +36,9 @@ public class Principal {
         System.out.println("TamCol: " + m1.getColumnCount());
         System.out.println("TamRow: " + m1.getRowCount());
 
+        System.out.println(m1.ToString2());
+
+
         m1.set(1, 1, 10);
         System.out.println(m1);
         System.out.println("TamCol: " + m1.getColumnCount());
@@ -51,10 +54,42 @@ public class Principal {
         System.out.println("TamCol: " + m1.getColumnCount());
         System.out.println("TamRow: " + m1.getRowCount());
 
+        m1.set(2, 1, 25);
+        System.out.println(m1);
+        System.out.println("TamCol: " + m1.getColumnCount());
+        System.out.println("TamRow: " + m1.getRowCount());
+
         m1.set(2, 2, 17);
         System.out.println(m1);
         System.out.println("TamCol: " + m1.getColumnCount());
         System.out.println("TamRow: " + m1.getRowCount());
+
+        m1.set(2, 3, 6);
+        System.out.println(m1);
+        System.out.println("TamCol: " + m1.getColumnCount());
+        System.out.println("TamRow: " + m1.getRowCount());
+
+        m1.set(3, 1, 30);
+        System.out.println(m1);
+        System.out.println("TamCol: " + m1.getColumnCount());
+        System.out.println("TamRow: " + m1.getRowCount());
+
+        System.out.println(m1.ToString2());
+
+        m1.set(3, 2, 54);
+        System.out.println(m1);
+        System.out.println("TamCol: " + m1.getColumnCount());
+        System.out.println("TamRow: " + m1.getRowCount());
+
+        m1.set(3, 3, 61);
+        System.out.println(m1);
+        System.out.println("TamCol: " + m1.getColumnCount());
+        System.out.println("TamRow: " + m1.getRowCount());
+
+
+        System.out.println(m1.ToString2());
+
+
     }
 
 }
