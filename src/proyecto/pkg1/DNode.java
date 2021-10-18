@@ -23,7 +23,7 @@ public class DNode<T> {
     }
 
     public DNode() {
-        
+
     }
 
     public T getInfo() {
@@ -45,7 +45,5 @@ public class DNode<T> {
     public void setPrevious(DNode<T> previous) {
         this.previous = previous;
     }
-    
-    
 
 }

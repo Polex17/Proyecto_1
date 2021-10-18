@@ -30,19 +30,18 @@ public class DQueue<T> {
 
     }
 
-    public boolean isReal(int n){
+    public boolean isReal(int n) {
         int aux = n;
         DNode<T> cursor = first;
         while (cursor != null) {
             cursor = cursor.getNext();
-            if (aux == 0){
+            if (aux == 0) {
                 return true;
-            }
-            else{
+            } else {
                 aux--;
             }
         }
-            return false;
+        return false;
     }
 
     public boolean isEmpty() {
@@ -200,7 +199,7 @@ public class DQueue<T> {
         r.append("}\n");
         return r.toString();
     }
-/*
+    /*
     public void sort(DQueue<T> q1) {
         q1 = MergeSort(q1);
     }
