@@ -143,18 +143,18 @@ public class SparseMatrix<T> {
     public String ToString2(){
         StringBuilder r = new StringBuilder();
         r.append("+");
-        for (int i = 0; i<tamCol ;i++){
+        for (int i = 0; i<getColumnCount() ;i++){
             r.append("----");
         }
         r.append("+\n");
 
-        for (int j=0;j<tamRow;j++){
+        for (int j=0;j<getRowCount();j++){
             if (rows.isReal(j)){
-                r.append(rows.get(j).toString2(tamCol));
+                r.append(rows.get(j).toString2(getColumnCount()));
             }
             else{
                 r.append("|0");
-                for (int l = 1;l<tamCol;l++){
+                for (int l = 1;l<getColumnCount();l++){
                     r.append(", 0");
                 }
                 r.append("|\n");
@@ -162,7 +162,7 @@ public class SparseMatrix<T> {
         }
 
         r.append("+");
-        for (int i = 0; i<tamCol ;i++){
+        for (int i = 0; i<getColumnCount() ;i++){
             r.append("----");
         }
         r.append("+\n");
