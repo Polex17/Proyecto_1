@@ -46,9 +46,13 @@ public class Principal {
         System.out.println("TamCol: " + m1.getColumnCount());
         System.out.println("TamRow: " + m1.getRowCount());
 
+        m1.set(1, 3, 99);
+        System.out.println(m1);
+        System.out.println("TamCol: " + m1.getColumnCount());
+        System.out.println("TamRow: " + m1.getRowCount());
+
         m1.set(2, 2, 17);
         System.out.println(m1);
-
         System.out.println("TamCol: " + m1.getColumnCount());
         System.out.println("TamRow: " + m1.getRowCount());
     }

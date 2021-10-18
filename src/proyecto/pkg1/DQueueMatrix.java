@@ -79,8 +79,7 @@ public class DQueueMatrix<T> {
         if (object != null) {
             if ((position < 0 || total <= position) && last.getPos() != location) {
                 add(object, location);
-            }
-            if (position == size() && last.getPos() != location) {
+            } else if (position == size() && last.getPos() != location) {
                 add(object, location);
             } else {
                 DNodeMatrix<T> nodeAux = findPositionMatrix(location);
