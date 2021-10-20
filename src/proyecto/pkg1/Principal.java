@@ -16,7 +16,7 @@ package proyecto.pkg1;
  * 2do ciclo 2021, grupo ???? Proyecto 1
  *
  * 117180577 Jeffrey Steven Monroy Laguna
- *
+ * 117210130 Jean Paul Castillo Vives
  *
  *
  * -----------------------------------------------
@@ -33,12 +33,13 @@ public class Principal {
 
         m1.setDynamic(true);
 
-        m1.set(1, 1, 5);
+        m1.set(3, 3, 5);
         System.out.println(m1);
         System.out.println("TamCol: " + m1.getColumnCount());
         System.out.println("TamRow: " + m1.getRowCount());
         System.out.println("CurrentTamCol: " + m1.getTamCol());
         System.out.println("CurrentTamRow: " + m1.getTamRow());
+
 
         m1.set(1, 1, 10);
         System.out.println(m1);
@@ -120,6 +121,14 @@ public class Principal {
         System.out.println(m1.get(5, 5));
         System.out.println(m1.get(4, 5));
         System.out.println(m1.get(3, 3));
+
+        m1.set(7, 7, 2000);
+        System.out.println(m1);
+        System.out.println("TamCol: " + m1.getColumnCount());
+        System.out.println("TamRow: " + m1.getRowCount());
+        System.out.println("CurrentTamCol: " + m1.getTamCol());
+        System.out.println("CurrentTamRow: " + m1.getTamRow());
+
     }
 
 }

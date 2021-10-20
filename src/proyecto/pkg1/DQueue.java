@@ -11,6 +11,16 @@ import java.util.Comparator;
  *
  * @author Jeffrey
  * @param <T>
+ *
+ * ----------------------------------------------- EIF207 Estructuras de Datos
+ * 2do ciclo 2021, grupo ???? Proyecto 1
+ *
+ * 117180577 Jeffrey Steven Monroy Laguna
+ * 117210130 Jean Paul Castillo Vives
+ *
+ *
+ * -----------------------------------------------
+ *
  */
 public class DQueue<T> {
 

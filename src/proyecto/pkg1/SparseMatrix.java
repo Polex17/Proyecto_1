@@ -16,7 +16,7 @@ package proyecto.pkg1;
  * 2do ciclo 2021, grupo ???? Proyecto 1
  *
  * 117180577 Jeffrey Steven Monroy Laguna
- *
+ * 117210130 Jean Paul Castillo Vives
  *
  *
  * -----------------------------------------------
@@ -177,7 +177,63 @@ public class SparseMatrix<T> {
 
     }
 
-    @Override
+/*
+    SparseMatrix<T> suma(SparseMatrix<T> a, SparseMatrix<T> b){
+        if (a.getColumnCount() == b.getColumnCount() && a.getRowCount() == b.getRowCount()){
+            SparseMatrix<T> x;
+            for (int i=0;i<a.getColumnCount();i++){
+                for (int j=0;j<a.getRowCount();j++){
+                    x.set(a.getColumnCount(),a.getRowCount(), a.get(i,j));
+                    String sa = (String) a.get(i,j);
+                }
+            }
+
+        }
+        else{
+
+            throw new IndexOutOfBoundsException();
+        }
+    }
+*/
+        @Override
+        public String toString(){
+        StringBuilder r = new StringBuilder();
+        r.append("+");
+        for (int i = 0; i < tamCol; i++) {
+            r.append("----");
+        }
+        r.append("+\n");
+
+        int aux;
+
+        for (int i=0;i<tamRow;i++){
+            aux = tamRow;
+            for (int j=0; j<tamRow;j++) {
+                if (rows.isReal(j)) {
+                    if (rows.get(j).getPosRow() == i+1) {
+                        r.append(rows.get(j).toString3(tamCol));
+                    }else {aux--;}
+                }else {aux--;}
+            }
+            if (aux==0){
+                r.append(i+1+"|0");
+                for (int l = 1; l < tamCol; l++) {
+                    r.append(", 0");
+                }
+                r.append("|\n");
+            }
+        }
+
+
+        r.append("+");
+        for (int i = 0; i < tamCol; i++) {
+            r.append("----");
+        }
+        r.append("+\n");
+        return r.toString();
+    }
+
+    /*@Override
     public String toString() {
         StringBuilder r = new StringBuilder();
         r.append("+");
@@ -190,11 +246,34 @@ public class SparseMatrix<T> {
             if (rows.isReal(j)) {
                 r.append(rows.get(j).toString2(tamCol));
             } else {
-                r.append("|0");
-                for (int l = 1; l < tamCol; l++) {
-                    r.append(", 0");
+                if (rows.get(0).get(0) instanceof String){
+                    r.append("| ");
+                    for (int l = 1; l < tamCol; l++) {
+                        r.append(", ");
+                    }
+                    r.append("|\n");
                 }
-                r.append("|\n");
+                else if (rows.get(0).get(0) instanceof Boolean){
+                    r.append("| "+false);
+                    for (int l = 1; l < tamCol; l++) {
+                        r.append(", "+false);
+                    }
+                    r.append("|\n");
+                }
+                else if (rows.get(0).get(0) instanceof Character){
+                    r.append("| ");
+                    for (int l = 1; l < tamCol; l++) {
+                        r.append(", ");
+                    }
+                    r.append("|\n");
+                }
+                else {
+                    r.append("|0");
+                    for (int l = 1; l < tamCol; l++) {
+                        r.append(", 0");
+                    }
+                    r.append("|\n");
+                }
             }
         }
 
@@ -204,7 +283,7 @@ public class SparseMatrix<T> {
         }
         r.append("+\n");
         return r.toString();
-    }
+    }*/
 
     boolean equals(SparseMatrix<T> other) {
         return false;

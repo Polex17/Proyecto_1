@@ -18,7 +18,7 @@ import java.util.Comparator;
  * 2do ciclo 2021, grupo ???? Proyecto 1
  *
  * 117180577 Jeffrey Steven Monroy Laguna
- *
+ * 117210130 Jean Paul Castillo Vives
  *
  *
  * -----------------------------------------------
@@ -97,6 +97,40 @@ public class DQueueMatrix<T> {
         } else {
             throw new IllegalArgumentException();
         }
+    }
+
+    public String toString3(int n){
+        StringBuilder r = new StringBuilder();
+        DNodeMatrix<T> nodeAux;
+        int aux;
+        r.append(posRow);
+        r.append("|");
+        for (int i=0;i<n;i++) {
+            nodeAux = first;
+            aux = 0;
+            while (nodeAux != null) {
+                if (nodeAux.getPos() == i+1) {
+                    r.append(nodeAux.getInfo());
+                    nodeAux = nodeAux.getNext();
+                    aux=1;
+                    if (i+1!=n) {
+                        r.append(", ");
+                    }
+
+                }else{
+                    nodeAux = nodeAux.getNext();
+                    //aux--;
+                }
+            }
+            if (aux==0){
+                r.append(0);
+                if (i+1!=n) {
+                    r.append(", ");
+                }
+            }
+        }
+        r.append("|\n");
+        return r.toString();
     }
 
     public String toString2(int n) {

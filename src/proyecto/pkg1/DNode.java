@@ -9,6 +9,16 @@ package proyecto.pkg1;
  *
  * @author Jeffrey
  * @param <T>
+ *
+ * ----------------------------------------------- EIF207 Estructuras de Datos
+ * 2do ciclo 2021, grupo ???? Proyecto 1
+ *
+ * 117180577 Jeffrey Steven Monroy Laguna
+ * 117210130 Jean Paul Castillo Vives
+ *
+ *
+ * -----------------------------------------------
+ *
  */
 public class DNode<T> {
 
