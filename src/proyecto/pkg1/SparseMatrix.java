@@ -15,8 +15,7 @@ package proyecto.pkg1;
  * ----------------------------------------------- EIF207 Estructuras de Datos
  * 2do ciclo 2021, grupo ???? Proyecto 1
  *
- * 117180577 Jeffrey Steven Monroy Laguna
- * 117210130 Jean Paul Castillo Vives
+ * 117180577 Jeffrey Steven Monroy Laguna 117210130 Jean Paul Castillo Vives
  *
  *
  * -----------------------------------------------
@@ -29,6 +28,7 @@ public class SparseMatrix<T> {
     int tamCol;
     DQueue<DQueueMatrix> rows;
     boolean dynamic;
+    T commonValue;
 
     SparseMatrix(int m, int n, T value) {
         tamRow = m;
@@ -36,7 +36,7 @@ public class SparseMatrix<T> {
 
         rows = new DQueue<>();
 
-        //Falta ver que hacer con el value de T
+        commonValue = value;
     }
 
     SparseMatrix(int m, int n) {
@@ -55,21 +55,11 @@ public class SparseMatrix<T> {
     }
 
     int getRowCount() {
-        return rows.size();
+        return this.tamRow;
     }
 
     int getColumnCount() {
-        int columnValue = 0;
-        for (int index = 0; index < rows.size(); index++) {
-            for (int index2 = 0; index2 < rows.get(index).size(); index2++) {
-                if (rows.get(index).getNodePos(index2) > columnValue) {
-
-                    columnValue = rows.get(index).getNodePos(index2);
-                }
-            }
-        }
-
-        return columnValue;
+        return this.tamCol;
     }
 
     void set(int positionRow, int positionColumn, T object) {
@@ -170,14 +160,14 @@ public class SparseMatrix<T> {
                     }
                 }
             }
-            return null;
+            return this.commonValue;
         } else {
             throw new IndexOutOfBoundsException();
         }
 
     }
 
-/*
+    /*
     SparseMatrix<T> suma(SparseMatrix<T> a, SparseMatrix<T> b){
         if (a.getColumnCount() == b.getColumnCount() && a.getRowCount() == b.getRowCount()){
             SparseMatrix<T> x;
@@ -194,9 +184,9 @@ public class SparseMatrix<T> {
             throw new IndexOutOfBoundsException();
         }
     }
-*/
-        @Override
-        public String toString(){
+     */
+    @Override
+    public String toString() {
         StringBuilder r = new StringBuilder();
         r.append("+");
         for (int i = 0; i < tamCol; i++) {
@@ -206,24 +196,27 @@ public class SparseMatrix<T> {
 
         int aux;
 
-        for (int i=0;i<tamRow;i++){
+        for (int i = 0; i < tamRow; i++) {
             aux = tamRow;
-            for (int j=0; j<tamRow;j++) {
+            for (int j = 0; j < tamRow; j++) {
                 if (rows.isReal(j)) {
-                    if (rows.get(j).getPosRow() == i+1) {
+                    if (rows.get(j).getPosRow() == i + 1) {
                         r.append(rows.get(j).toString3(tamCol));
-                    }else {aux--;}
-                }else {aux--;}
+                    } else {
+                        aux--;
+                    }
+                } else {
+                    aux--;
+                }
             }
-            if (aux==0){
-                r.append(i+1+"|0");
+            if (aux == 0) {
+                r.append(i + 1 + "|0");
                 for (int l = 1; l < tamCol; l++) {
                     r.append(", 0");
                 }
                 r.append("|\n");
             }
         }
-
 
         r.append("+");
         for (int i = 0; i < tamCol; i++) {
@@ -284,7 +277,6 @@ public class SparseMatrix<T> {
         r.append("+\n");
         return r.toString();
     }*/
-
     boolean equals(SparseMatrix<T> other) {
         return false;
     }

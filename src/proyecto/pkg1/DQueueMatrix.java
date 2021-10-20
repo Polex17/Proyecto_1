@@ -17,8 +17,7 @@ import java.util.Comparator;
  * ----------------------------------------------- EIF207 Estructuras de Datos
  * 2do ciclo 2021, grupo ???? Proyecto 1
  *
- * 117180577 Jeffrey Steven Monroy Laguna
- * 117210130 Jean Paul Castillo Vives
+ * 117180577 Jeffrey Steven Monroy Laguna 117210130 Jean Paul Castillo Vives
  *
  *
  * -----------------------------------------------
@@ -77,54 +76,67 @@ public class DQueueMatrix<T> {
 
     public void addPosition(T object, int location, int position) {
         if (object != null) {
-            if ((position < 0 || total <= position) && last.getPos() != location) {
+            if ((position < 0 || last.getPos() <= position) && (last.getPos() != location)) {
                 add(object, location);
             } else if (position == size() && last.getPos() != location) {
                 add(object, location);
             } else {
                 DNodeMatrix<T> nodeAux = findPositionMatrix(location);
-                DNodeMatrix<T> node = new DNodeMatrix<>(object, nodeAux.getPrevious(), nodeAux.getNext(), location);
-
-                if (first.getPos() == location) {
-                    first = node;
-                }
-                if (last.getPos() == location) {
-                    last = node;
+                if (nodeAux.getPos() == location) {
+                    DNodeMatrix<T> node = new DNodeMatrix<>(object, nodeAux.getPrevious(), nodeAux.getNext(), location);
+                    if (first.getPos() == location) {
+                        first = node;
+                    }
+                    if (last.getPos() == location) {
+                        last = node;
+                    } else {
+                        node.getNext().setPrevious(node);
+                    }
                 } else {
-                    node.getNext().setPrevious(node);
+                    DNodeMatrix<T> node = new DNodeMatrix<>(object, nodeAux, nodeAux.getNext(), location);
+                    if (first.getPos() == location || first.getPos() > location) {
+                        first = node;
+                    }
+                    if (last.getPos() == location || last.getPos() < location) {
+                        last = node;
+                    } else {
+                        node.getNext().setPrevious(node);
+                    }
+                    total++;
                 }
+
             }
         } else {
             throw new IllegalArgumentException();
         }
     }
 
-    public String toString3(int n){
+    public String toString3(int n) {
         StringBuilder r = new StringBuilder();
         DNodeMatrix<T> nodeAux;
         int aux;
         r.append(posRow);
         r.append("|");
-        for (int i=0;i<n;i++) {
+        for (int i = 0; i < n; i++) {
             nodeAux = first;
             aux = 0;
             while (nodeAux != null) {
-                if (nodeAux.getPos() == i+1) {
+                if (nodeAux.getPos() == i + 1) {
                     r.append(nodeAux.getInfo());
                     nodeAux = nodeAux.getNext();
-                    aux=1;
-                    if (i+1!=n) {
+                    aux = 1;
+                    if (i + 1 != n) {
                         r.append(", ");
                     }
 
-                }else{
+                } else {
                     nodeAux = nodeAux.getNext();
                     //aux--;
                 }
             }
-            if (aux==0){
+            if (aux == 0) {
                 r.append(0);
-                if (i+1!=n) {
+                if (i + 1 != n) {
                     r.append(", ");
                 }
             }
@@ -222,6 +234,7 @@ public class DQueueMatrix<T> {
 
     }
 
+    /*
     private DNodeMatrix<T> findPositionMatrix(int position) {
         if ((0 <= position) && (position <= size())) {
             DNodeMatrix cursor = first;
@@ -232,6 +245,24 @@ public class DQueueMatrix<T> {
                     index++;
                 } else {
                     break;
+                }
+            }
+            //Assert es una forma de validar por decirlo un if con menos lineas de codigo tambien para evitar poner las lineas de excepcion
+            assert ((cursor.getPos() == position) && (cursor != null));
+            return cursor;
+        } else {
+            throw new IndexOutOfBoundsException();
+        }
+
+    }
+     */
+    private DNodeMatrix<T> findPositionMatrix(int position) {
+        if ((0 <= position) && (position <= last.getPos())) {
+            DNodeMatrix cursor = first;
+
+            while (cursor.getPos() < position) {
+                if (cursor.getPos() != position) {
+                    cursor = cursor.getNext();
                 }
             }
             //Assert es una forma de validar por decirlo un if con menos lineas de codigo tambien para evitar poner las lineas de excepcion
