@@ -30,7 +30,7 @@ public class SparseMatrix<T> {
     int tamCol;
     DQueue rows;
     boolean dynamic;
-    T commonValue;
+    T commonValue = (T) "0";
 
     SparseMatrix(int m, int n, T value) {
         tamRow = m;
@@ -70,6 +70,7 @@ public class SparseMatrix<T> {
 
             if (rows.isEmpty()) {
 
+                commonValue = (T) this.getCommonValue();
                 DQueueMatrix<T> rowToAdd = new DQueueMatrix<>(positionRow);
                 rowToAdd.add(object, positionColumn);
                 rows.add(rowToAdd);
@@ -190,6 +191,8 @@ public class SparseMatrix<T> {
      */
     @Override
     public String toString() {
+        
+        
         StringBuilder r = new StringBuilder();
         r.append("+");
         for (int i = 0; i < tamCol; i++) {
@@ -197,25 +200,13 @@ public class SparseMatrix<T> {
         }
         r.append("+\n");
 
-        int aux;
-
-        for (int i = 0; i < tamRow; i++) {
-            aux = tamRow;
-            for (int j = 0; j < tamRow; j++) {
-                if (rows.isReal(j)) {
-                    if (rows.get(j).getPosRow() == i + 1) {
-                        r.append(rows.get(j).toString3(tamCol));
-                    } else {
-                        aux--;
-                    }
-                } else {
-                    aux--;
-                }
-            }
-            if (aux == 0) {
-                r.append(i + 1 + "|0");
+        for (int j = 0; j < tamRow; j++) {
+            if (rows.isReal(j)) {
+                r.append(rows.get(j).toString2(tamCol,(String) commonValue));
+            } else {
+                r.append("|"+commonValue);
                 for (int l = 1; l < tamCol; l++) {
-                    r.append(", 0");
+                    r.append(","+commonValue);
                 }
                 r.append("|\n");
             }
@@ -228,7 +219,7 @@ public class SparseMatrix<T> {
         r.append("+\n");
         return r.toString();
     }
-
+    
     /*@Override
     public String toString() {
         StringBuilder r = new StringBuilder();
@@ -316,4 +307,18 @@ public class SparseMatrix<T> {
     public int getTamCol() {
         return tamCol;
     }
+    
+     public T getCommonValue(){
+   T result = (T) "0";
+   
+   
+   try{
+    if(this.get(3,3).getClass().getSimpleName().equals("Integer")){ result=(T) "0";}
+    else if(this.get(3,3).getClass().getSimpleName().equals("String")){result=(T) "X";}
+ 
+    return result;
+   }catch(Exception e){return result;}
+    }
+    
+    
 }
