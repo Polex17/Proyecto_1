@@ -15,7 +15,7 @@ package proyecto.pkg1;
  * ----------------------------------------------- EIF207 Estructuras de Datos
  * 2do ciclo 2021, grupo ???? Proyecto 1
  *
- * 117180577 Jeffrey Steven Monroy Laguna
+ * 117180577 Jeffrey Steven Monroy Laguna 
  * 117210130 Jean Paul Castillo Vives
  *
  *
@@ -23,6 +23,7 @@ package proyecto.pkg1;
  *
  *
  */
+
 public class DNodeMatrix<T> {
 
     private T info;

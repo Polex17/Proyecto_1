@@ -15,13 +15,15 @@ package proyecto.pkg1;
  * ----------------------------------------------- EIF207 Estructuras de Datos
  * 2do ciclo 2021, grupo ???? Proyecto 1
  *
- * 117180577 Jeffrey Steven Monroy Laguna 117210130 Jean Paul Castillo Vives
+ * 117180577 Jeffrey Steven Monroy Laguna 
+ * 117210130 Jean Paul Castillo Vives
  *
  *
  * -----------------------------------------------
  *
  *
  */
+
 public class Principal {
 
     /**
@@ -93,10 +95,13 @@ public class Principal {
         System.out.println("TamRow: " + m1.getRowCount());
 
         m1.set(5, 3, 1000);
+        System.out.println(m1);
+
+        m1.set(4, 3, 500);
+        System.out.println(m1);
 
         System.out.println(m1.get(5, 3));
-        System.out.println(m1.get(4, 5));
-        System.out.println(m1.get(3, 3));
+        System.out.println(m1.get(4, 3));
 
     }
 

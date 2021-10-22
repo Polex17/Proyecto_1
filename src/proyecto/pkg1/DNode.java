@@ -7,26 +7,30 @@ package proyecto.pkg1;
 
 /**
  *
- * @author Jeffrey
- * @param <T>
+ * (c) 2021
+ *
+ * @author Jeffrey Steven Monroy Laguna, ,
+ * @version 1.0.0 2021-10-24
  *
  * ----------------------------------------------- EIF207 Estructuras de Datos
  * 2do ciclo 2021, grupo ???? Proyecto 1
  *
- * 117180577 Jeffrey Steven Monroy Laguna
+ * 117180577 Jeffrey Steven Monroy Laguna 
  * 117210130 Jean Paul Castillo Vives
  *
  *
  * -----------------------------------------------
  *
+ *
  */
-public class DNode<T> {
 
-    private T info;
-    private DNode<T> next;
-    private DNode<T> previous;
+public class DNode {
 
-    public DNode(T info, DNode<T> next, DNode<T> previous) {
+    private DQueueMatrix info;
+    private DNode next;
+    private DNode previous;
+
+    public DNode(DQueueMatrix info, DNode next, DNode previous) {
         this.info = info;
         this.next = next;
         this.previous = previous;
@@ -36,23 +40,23 @@ public class DNode<T> {
 
     }
 
-    public T getInfo() {
+    public DQueueMatrix getInfo() {
         return info;
     }
 
-    public DNode<T> getNext() {
+    public DNode getNext() {
         return next;
     }
 
-    public DNode<T> getPrevious() {
+    public DNode getPrevious() {
         return previous;
     }
 
-    public void setNext(DNode<T> next) {
+    public void setNext(DNode next) {
         this.next = next;
     }
 
-    public void setPrevious(DNode<T> previous) {
+    public void setPrevious(DNode previous) {
         this.previous = previous;
     }
 

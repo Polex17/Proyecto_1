@@ -15,18 +15,20 @@ package proyecto.pkg1;
  * ----------------------------------------------- EIF207 Estructuras de Datos
  * 2do ciclo 2021, grupo ???? Proyecto 1
  *
- * 117180577 Jeffrey Steven Monroy Laguna 117210130 Jean Paul Castillo Vives
+ * 117180577 Jeffrey Steven Monroy Laguna 
+ * 117210130 Jean Paul Castillo Vives
  *
  *
  * -----------------------------------------------
  *
  *
  */
+
 public class SparseMatrix<T> {
 
     int tamRow;
     int tamCol;
-    DQueue<DQueueMatrix> rows;
+    DQueue rows;
     boolean dynamic;
     T commonValue;
 
@@ -34,7 +36,7 @@ public class SparseMatrix<T> {
         tamRow = m;
         tamCol = n;
 
-        rows = new DQueue<>();
+        rows = new DQueue();
 
         commonValue = value;
     }
@@ -43,7 +45,8 @@ public class SparseMatrix<T> {
         tamRow = m;
         tamCol = n;
 
-        rows = new DQueue<>();
+        rows = new DQueue();
+
     }
 
     public boolean isDynamic() {
@@ -69,7 +72,7 @@ public class SparseMatrix<T> {
 
                 DQueueMatrix<T> rowToAdd = new DQueueMatrix<>(positionRow);
                 rowToAdd.add(object, positionColumn);
-                rows.add(rowToAdd, positionRow);
+                rows.add(rowToAdd);
 
             } else if (positionRow <= this.tamRow && positionColumn <= this.tamCol) {
 
@@ -88,7 +91,7 @@ public class SparseMatrix<T> {
                 if (!isFound) {
                     DQueueMatrix<T> rowToAdd = new DQueueMatrix<>(positionRow);
                     rowToAdd.add(object, positionColumn);
-                    rows.add(rowToAdd, positionRow);
+                    rows.add(rowToAdd, positionRow, positionRow);
                 }
             } else if (this.dynamic) {
 
@@ -96,7 +99,7 @@ public class SparseMatrix<T> {
 
                     DQueueMatrix<T> rowToAdd = new DQueueMatrix<>(positionRow);
                     rowToAdd.add(object, positionColumn);
-                    rows.add(rowToAdd, positionRow);
+                    rows.add(rowToAdd, positionRow, positionRow);
                     this.setTamRow(positionRow);
 
                 } else if (positionRow <= this.tamRow && positionColumn > this.tamCol) {
@@ -117,7 +120,7 @@ public class SparseMatrix<T> {
                     if (!isFound) {
                         DQueueMatrix<T> rowToAdd = new DQueueMatrix<>(positionRow);
                         rowToAdd.add(object, positionColumn);
-                        rows.add(rowToAdd, positionRow);
+                        rows.add(rowToAdd, positionRow, positionRow);
                     }
                     this.setTamCol(positionColumn);
 
@@ -125,7 +128,7 @@ public class SparseMatrix<T> {
 
                     DQueueMatrix<T> rowToAdd = new DQueueMatrix<>(positionRow);
                     rowToAdd.add(object, positionColumn);
-                    rows.add(rowToAdd, positionRow);
+                    rows.add(rowToAdd, positionRow, positionRow);
                     this.setTamCol(positionColumn);
                     this.setTamRow(positionRow);
                 }
@@ -294,6 +297,7 @@ public class SparseMatrix<T> {
     }
 
     SparseMatrix<T> splice(int m0, int m1, int n0, int n1) {
+
         return null;
     }
 
