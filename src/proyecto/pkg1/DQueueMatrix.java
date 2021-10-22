@@ -144,7 +144,7 @@ public class DQueueMatrix<T> {
         return r.toString();
     }
 
-    public String toString2(int n) {
+    public String toString2(int n, String commonValue) {
         StringBuilder r = new StringBuilder();
         DNodeMatrix<T> nodeAux = first;
         int aux = n;
@@ -158,7 +158,7 @@ public class DQueueMatrix<T> {
             aux--;
         }
         for (int k = aux; k > 0; k--) {
-            r.append(", 0");
+            r.append(","+commonValue);
         }
         r.append("|\n");
         return r.toString();
