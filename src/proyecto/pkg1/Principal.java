@@ -32,6 +32,16 @@ public class Principal {
 
         m1.setDynamic(true);
 
+        m1.set(2, 2, 17);
+        System.out.println(m1);
+        System.out.println("TamCol: " + m1.getColumnCount());
+        System.out.println("TamRow: " + m1.getRowCount());
+
+        m1.set(1, 2, 7);
+        System.out.println(m1);
+        System.out.println("TamCol: " + m1.getColumnCount());
+        System.out.println("TamRow: " + m1.getRowCount());
+
         m1.set(1, 1, 5);
         System.out.println(m1);
         System.out.println("TamCol: " + m1.getColumnCount());
@@ -42,22 +52,12 @@ public class Principal {
         System.out.println("TamCol: " + m1.getColumnCount());
         System.out.println("TamRow: " + m1.getRowCount());
 
-        m1.set(1, 2, 7);
-        System.out.println(m1);
-        System.out.println("TamCol: " + m1.getColumnCount());
-        System.out.println("TamRow: " + m1.getRowCount());
-
         m1.set(1, 3, 99);
         System.out.println(m1);
         System.out.println("TamCol: " + m1.getColumnCount());
         System.out.println("TamRow: " + m1.getRowCount());
 
         m1.set(2, 1, 25);
-        System.out.println(m1);
-        System.out.println("TamCol: " + m1.getColumnCount());
-        System.out.println("TamRow: " + m1.getRowCount());
-
-        m1.set(2, 2, 17);
         System.out.println(m1);
         System.out.println("TamCol: " + m1.getColumnCount());
         System.out.println("TamRow: " + m1.getRowCount());
@@ -121,22 +121,22 @@ public class Principal {
         m4.set(1, 2, 2);
         m4.set(2, 1, 5);
         m4.set(3, 2, 2);
-
+/*
         System.out.println(m3);
         System.out.println(m4);
 
         SparseMatrix<Integer> m0;
 
-        System.out.println("Multiply");
-        m0 = m3.multiply(m4);
-        System.out.println(m0);
-
         System.out.println("Transpose");
         m5 = m2.transpose();
         System.out.println(m5);
 
-        System.out.println(m1.equals(m2));
+        System.out.println("Multiply");
+        m0 = m3.multiply(m4);
+        System.out.println(m0);
 
+        System.out.println(m1.equals(m2));
+*/
     }
 
 }

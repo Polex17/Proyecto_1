@@ -173,25 +173,24 @@ public class SparseMatrix<T> {
     public String toString() {
 
         StringBuilder r = new StringBuilder();
-        r.append("+");
+        r.append(" +");
         for (int i = 0; i < tamCol; i++) {
             r.append("----");
         }
         r.append("+\n");
-
         for (int j = 0; j < tamRow; j++) {
             if (rows.isReal(j)) {
-                r.append(rows.get(j).toString2(tamCol, (String) commonValue));
+                r.append(rows.get(j).toString3(tamCol, "0"));
             } else {
-                r.append("|" + commonValue);
+                r.append(j + 1 + "|" + commonValue);
                 for (int l = 1; l < tamCol; l++) {
-                    r.append("," + commonValue);
+                    r.append(", " + commonValue);
                 }
                 r.append("|\n");
             }
         }
 
-        r.append("+");
+        r.append(" +");
         for (int i = 0; i < tamCol; i++) {
             r.append("----");
         }

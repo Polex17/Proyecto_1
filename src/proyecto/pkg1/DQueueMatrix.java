@@ -109,7 +109,7 @@ public class DQueueMatrix<T> {
         }
     }
 
-    public String toString3(int n) {
+    public String toString3(int n, String T) {
         StringBuilder r = new StringBuilder();
         DNodeMatrix<T> nodeAux;
         int aux;
@@ -133,7 +133,7 @@ public class DQueueMatrix<T> {
                 }
             }
             if (aux == 0) {
-                r.append(0);
+                r.append(T);
                 if (i + 1 != n) {
                     r.append(", ");
                 }
