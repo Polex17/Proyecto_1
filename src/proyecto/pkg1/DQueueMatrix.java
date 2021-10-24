@@ -15,8 +15,7 @@ package proyecto.pkg1;
  * ----------------------------------------------- EIF207 Estructuras de Datos
  * 2do ciclo 2021, grupo ???? Proyecto 1
  *
- * 117180577 Jeffrey Steven Monroy Laguna 
- * 117210130 Jean Paul Castillo Vives
+ * 117180577 Jeffrey Steven Monroy Laguna 117210130 Jean Paul Castillo Vives
  *
  *
  * -----------------------------------------------
@@ -158,7 +157,7 @@ public class DQueueMatrix<T> {
             aux--;
         }
         for (int k = aux; k > 0; k--) {
-            r.append(","+commonValue);
+            r.append("," + commonValue);
         }
         r.append("|\n");
         return r.toString();
