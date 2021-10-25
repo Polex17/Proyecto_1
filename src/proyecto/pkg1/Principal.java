@@ -42,13 +42,13 @@ public class Principal {
         System.out.println("TamCol: " + m1.getColumnCount());
         System.out.println("TamRow: " + m1.getRowCount());
 
-        m1.set(1, 1, 5);
+        m1.set(2, 2, 5);
         System.out.println(m1);
         System.out.println("TamCol: " + m1.getColumnCount());
         System.out.println("TamRow: " + m1.getRowCount());
 
         m1.set(1, 1, 10);
-        System.out.println(m1);
+        //System.out.println(m1);
         System.out.println("TamCol: " + m1.getColumnCount());
         System.out.println("TamRow: " + m1.getRowCount());
 
@@ -121,7 +121,7 @@ public class Principal {
         m4.set(1, 2, 2);
         m4.set(2, 1, 5);
         m4.set(3, 2, 2);
-/*
+
         System.out.println(m3);
         System.out.println(m4);
 
@@ -131,12 +131,17 @@ public class Principal {
         m5 = m2.transpose();
         System.out.println(m5);
 
+        System.out.println("Add");
+        m0 = m3.add(m4);
+        System.out.println(m0);
+
         System.out.println("Multiply");
         m0 = m3.multiply(m4);
         System.out.println(m0);
 
+        System.out.println("Equals");
         System.out.println(m1.equals(m2));
-*/
+
     }
 
 }

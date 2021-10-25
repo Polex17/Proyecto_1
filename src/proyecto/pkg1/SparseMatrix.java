@@ -71,7 +71,7 @@ public class SparseMatrix<T> {
                 DQueueMatrix<T> rowToAdd = new DQueueMatrix<>(positionRow);
                 rowToAdd.add(object, positionColumn);
                 rows.add(rowToAdd);
-                commonValue = (T) this.getCommonValue();
+                commonValue = (T) this.getCommonValue(object);
 
             } else if (positionRow <= this.tamRow && positionColumn <= this.tamCol) {
 
@@ -172,6 +172,7 @@ public class SparseMatrix<T> {
     @Override
     public String toString() {
 
+        int aux=0;
         StringBuilder r = new StringBuilder();
         r.append(" +");
         for (int i = 0; i < tamCol; i++) {
@@ -180,7 +181,8 @@ public class SparseMatrix<T> {
         r.append("+\n");
         for (int j = 0; j < tamRow; j++) {
             if (rows.isReal(j)) {
-                r.append(rows.get(j).toString3(tamCol, "0"));
+                r.append(rows.get(aux).toString3(tamCol, "0"));
+                aux++;
             } else {
                 r.append(j + 1 + "|" + commonValue);
                 for (int l = 1; l < tamCol; l++) {
@@ -309,22 +311,22 @@ public class SparseMatrix<T> {
 
         for (int i = 1; i <= r; i++) {
             for (int j = 1; j <= c; j++) {
-                x = (Integer) commonValue;
+                x = Integer.parseInt( (String) commonValue);
                 for (int k = 1; k <= m; k++) {
                     if (this.get(i, k) == commonValue && a.get(k, j) == commonValue) {
 
                     } else if (this.get(i, k) == commonValue) {
-                        y = (Integer) a.get(k, j) * (Integer) commonValue;
+                        y = (Integer) a.get(k, j) * Integer.parseInt( (String) commonValue);
                         x = x + y;
                     } else if (a.get(k, j) == commonValue) {
-                        y = (Integer) this.get(i, k) * (Integer) commonValue;
+                        y = (Integer) this.get(i, k) * Integer.parseInt( (String) commonValue);
                         x = x + y;
                     } else {
                         y = (Integer) a.get(k, j) * (Integer) this.get(i, k);
                         x = x + y;
                     }
                 }
-                if (x != (Integer) commonValue) {
+                if (x != Integer.parseInt( (String) commonValue)) {
                     T tx = (T) (Integer) x;
                     mult.set(i, j, tx);
                 }
@@ -336,7 +338,7 @@ public class SparseMatrix<T> {
 
     SparseMatrix<T> splice(int positionRowFrom, int positionRowTo, int positionColumnFrom, int positionColumnTo) {
         if ((positionRowFrom > 0 && positionRowTo <= this.tamRow) && (positionColumnFrom > 0 && positionColumnTo <= this.tamCol) && (positionRowFrom <= positionRowTo) && (positionColumnFrom <= positionColumnTo)) {
-            SparseMatrix<T> matrix = new SparseMatrix<>(sumatoria(positionRowFrom, positionRowTo), sumatoria(positionColumnFrom, positionColumnTo), this.getCommonValue());
+            SparseMatrix<T> matrix = new SparseMatrix<>(sumatoria(positionRowFrom, positionRowTo), sumatoria(positionColumnFrom, positionColumnTo), this.getCommonValue(commonValue));
             int index = 0;
             int currentRow = 1;
             int currentCol = 1;
@@ -419,13 +421,13 @@ public class SparseMatrix<T> {
         return !(valor1 <= valor2) ? contador : sumatoriaAux(valor1 += 1, valor2, contador += 1);
     }
 
-    public T getCommonValue() {
+    public T getCommonValue(T object) {
         T result = (T) "0";
 
         try {
-            if (this.get(3, 3).getClass().getSimpleName().equals("Integer")) {
+            if (object.getClass().getSimpleName().equals("Integer")) {
                 result = (T) "0";
-            } else if (this.get(3, 3).getClass().getSimpleName().equals("String")) {
+            } else if (object.getClass().getSimpleName().equals("String")) {
                 result = (T) "X";
             }
 

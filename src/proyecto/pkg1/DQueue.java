@@ -41,15 +41,24 @@ public class DQueue {
     }
 
     public boolean isReal(int n) {
-        int aux = n;
         DNode cursor = first;
-        while (cursor != null) {
+        /*while (cursor != null) {
             cursor = cursor.getNext();
+
             if (aux == 0) {
                 return true;
             } else {
                 aux--;
             }
+        }
+        return false;
+*/
+        while (cursor != null) {
+            if (cursor.getInfo().getPosRow()==n+1){
+                return true;
+            }
+            else {
+            cursor = cursor.getNext();}
         }
         return false;
     }
